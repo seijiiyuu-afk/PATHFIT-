@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 270 50% 98%;
+    --foreground: 270 60% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 270 60% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 60% 10%;
+    --primary: 270 70% 40%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 30% 90%;
+    --secondary-foreground: 270 70% 30%;
+    --muted: 270 20% 94%;
+    --muted-foreground: 270 10% 45%;
+    --accent: 270 50% 85%;
+    --accent-foreground: 270 70% 25%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 270 30% 85%;
+    --input: 270 30% 85%;
+    --ring: 270 70% 50%;
+    --radius: 0.625rem;
+    --sidebar-background: 270 60% 15%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 270 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 270 50% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 270 40% 25%;
+    --sidebar-ring: 270 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .purple-gradient {
+    background: linear-gradient(135deg, #4A0E8F 0%, #7B2FBE 25%, #9B59B6 50%, #C39BD3 75%, #E8DAEF 100%);
+  }
+
+  .purple-gradient-dark {
+    background: linear-gradient(135deg, #2C0654 0%, #4A0E8F 50%, #6d28d9 100%);
+  }
+
+  .purple-glow {
+    box-shadow: 0 0 20px rgba(123, 47, 190, 0.3), 0 0 60px rgba(155, 89, 182, 0.15);
+  }
+
+  .gold-text {
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+
+  .editable-area {
+    @apply border-2 border-dashed border-purple-300 rounded-lg p-2 transition-all duration-300;
+  }
+
+  .editable-area:hover {
+    @apply border-purple-500 bg-purple-50/50;
+  }
+
+  .editable-area:focus {
+    @apply border-purple-600 bg-white outline-none ring-2 ring-purple-300;
+  }
+
+  .image-placeholder {
+    @apply border-2 border-dashed border-purple-300 rounded-lg flex flex-col items-center justify-center min-h-[200px] cursor-pointer transition-all duration-300 bg-purple-50/30;
+  }
+
+  .image-placeholder:hover {
+    @apply border-purple-500 bg-purple-50/60;
+  }
+
+  .page-container {
+    @apply min-h-screen bg-gradient-to-br from-purple-50 via-white to-purple-100;
+  }
+
+  .flower-decoration {
+    @apply pointer-events-none select-none;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 text-white/80 hover:text-white hover:bg-purple-800/50 rounded-lg transition-all duration-300 cursor-pointer;
+  }
+
+  .sidebar-item.active {
+    @apply text-yellow-300 bg-purple-800/70 font-bold;
+  }
+
+  .card-purple {
+    @apply bg-white/90 backdrop-blur-sm rounded-xl shadow-md border border-purple-200/50;
+  }
+
+  .shadow-purple {
+    box-shadow: 0 4px 14px rgba(123, 47, 190, 0.15);
+  }
+
+  .shadow-purple-lg {
+    box-shadow: 0 8px 30px rgba(123, 47, 190, 0.25);
+  }
+
+  .hover\:shadow-purple-lg:hover {
+    box-shadow: 0 8px 30px rgba(123, 47, 190, 0.25);
+  }
+
+  .btn-purple {
+    @apply px-6 py-3 bg-gradient-to-r from-purple-700 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold text-purple-900 text-center;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .floral-border {
+    position: relative;
+  }
+
+  .floral-border::before,
+  .floral-border::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-image: url('/images/flower-corner.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+  }
+
+  .floral-border::before {
+    top: -20px;
+    left: -20px;
+    transform: rotate(-15deg);
+  }
+
+  .floral-border::after {
+    bottom: -20px;
+    right: -20px;
+    transform: rotate(165deg);
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2C0654;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7B2FBE;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9B59B6;
+}
+
+/* Animation for floating flowers */
+@keyframes float-flower {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(3deg);
+  }
+  75% {
+    transform: translateY(10px) rotate(-3deg);
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .page-container {
+    page-break-after: always;
+  }
+}
